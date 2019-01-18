@@ -1,14 +1,15 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
+            <div class="col-md-12">
+                <form>
+                    <div class="form-group">
+                        <label for="greeting">Greeting:</label>
+                        <input v-model="greeting" type="greeting" class="form-control" id="greeting" placeholder="Enter a greeting">
                     </div>
-                </div>
+                </form>
+
+                <h2>{{ greeting }}</h2>
             </div>
         </div>
     </div>
@@ -16,8 +17,18 @@
 
 <script>
     export default {
+        data() {
+            return {
+                greeting: ''
+            }
+        },
+
         mounted() {
-            console.log('Component mounted.')
+
+        },
+
+        methods: {
+
         }
     }
 </script>

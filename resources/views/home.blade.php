@@ -19,5 +19,11 @@
             </div>
         </div>
     </div>
+
+    <div class="row justify-content-center">
+        <div id="app">
+            <example-component></example-component>
+        </div>
+    </div>
 </div>
 @endsection

@@ -2,14 +2,18 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <form>
-                    <div class="form-group">
-                        <label for="greeting">Greeting:</label>
-                        <input v-model="greeting" type="greeting" class="form-control" id="greeting" placeholder="Enter a greeting">
-                    </div>
-                </form>
+                <div class="form-group">
+                    <label for="greeting">Save Something:</label>
+                    <input v-model="item" type="text" class="form-control" id="greeting" placeholder="Enter something">
+                </div>
 
-                <h2>{{ greeting }}</h2>
+                <div class="form-group">
+                    <button class="btn btn-block btn-info" v-on:click="addItem(item)">Save</button>
+                </div>
+
+                <ul v-for="item in items">
+                    <li>{{ item }}</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -19,7 +23,11 @@
     export default {
         data() {
             return {
-                greeting: ''
+                item: '',
+
+                items: [
+
+                ]
             }
         },
 
@@ -28,7 +36,10 @@
         },
 
         methods: {
-
+            addItem(item) {
+                this.items.push(item);
+                this.item = '';
+            }
         }
     }
 </script>

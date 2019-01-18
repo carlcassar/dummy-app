@@ -1780,14 +1780,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      greeting: ''
+      item: '',
+      items: []
     };
   },
   mounted: function mounted() {},
-  methods: {}
+  methods: {
+    addItem: function addItem(item) {
+      this.items.push(item);
+      this.item = '';
+    }
+  }
 });
 
 /***/ }),
@@ -36641,41 +36651,63 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("form", [
+      _c(
+        "div",
+        { staticClass: "col-md-12" },
+        [
           _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "greeting" } }, [_vm._v("Greeting:")]),
+            _c("label", { attrs: { for: "greeting" } }, [
+              _vm._v("Save Something:")
+            ]),
             _vm._v(" "),
             _c("input", {
               directives: [
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.greeting,
-                  expression: "greeting"
+                  value: _vm.item,
+                  expression: "item"
                 }
               ],
               staticClass: "form-control",
               attrs: {
-                type: "greeting",
+                type: "text",
                 id: "greeting",
-                placeholder: "Enter a greeting"
+                placeholder: "Enter something"
               },
-              domProps: { value: _vm.greeting },
+              domProps: { value: _vm.item },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.greeting = $event.target.value
+                  _vm.item = $event.target.value
                 }
               }
             })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("h2", [_vm._v(_vm._s(_vm.greeting))])
-      ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-block btn-info",
+                on: {
+                  click: function($event) {
+                    _vm.addItem(_vm.item)
+                  }
+                }
+              },
+              [_vm._v("Save")]
+            )
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.items, function(item) {
+            return _c("ul", [_c("li", [_vm._v(_vm._s(item))])])
+          })
+        ],
+        2
+      )
     ])
   ])
 }
